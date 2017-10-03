@@ -2,6 +2,10 @@
 
 An example of keehost client in command line (Python).
 
+## Usage
+
+Coming soon
+
 ## Library
 
 A REST client library is available. Example with groups:
