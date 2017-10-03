@@ -20,7 +20,7 @@ class Entry(Model):
             'key': self.key,
             'url': self.url,
             'icon': self.icon,
-            'group': self.group.id if type(self.group) == Group else self.group
+            'group': self.group._id if type(self.group) == Group else self.group
         }
 
     @classmethod
@@ -53,3 +53,4 @@ class Entry(Model):
             pass
         else:
             entry.group = group
+        return entry
