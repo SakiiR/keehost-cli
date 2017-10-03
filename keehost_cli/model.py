@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import requests
+import json
 from dateutil.parser import parse
 
 def post_to_query_string(dico):
@@ -66,11 +67,12 @@ class ModelIterator(object):
             **self._params
         }
         try:
-            response = requests.get(self._base_url + '/%s%s' % (self._resource, post_to_query_string(params)),
-                                    headers=self._headers)
+            url = self._base_url + '/%s%s' % (self._resource, post_to_query_string(params))
+            response = requests.get(url, headers=self._headers)
             if response.status_code != 200:
                 return False
-        except:
+        except Exception as e:
+            print("Exception catch ! %s" % e)
             return False
         for item in response.json().get('_items'):
             self._documents.append(self._model_class.from_response(item))
@@ -203,7 +205,7 @@ class Model(object):
         headers = merge_dicts(self.get_headers(), headers)
         r = requests.post(self.get_base_url() + '/%s' % self.get_resource_name(), json=params, headers=headers)
         if r.status_code == 422:
-            print("Unprocessable entity, Check the schema")
+            print("Unprocessable entity, Check the schema %s" % r.json())
         return r.status_code == 201
 
     @classmethod
