@@ -34,11 +34,11 @@ def list_entries():
         if group.name not in groups:
             groups[group.name] = []
     for group in groups:
-        print("[G] %s" % group)
+        print("├── %s" % group)
         if len(groups.get(group)) == 0:
-            print("[^]\t Empty !")
+            print("[^] Empty !")
         for entry in groups.get(group):
-            print("[E]\t %s - %s" % (entry._id, entry.name))
+            print("├    ├── %s - %s" % (entry._id, entry.name))
     print("\n[+] Done!")
     return True
 
