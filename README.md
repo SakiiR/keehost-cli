@@ -4,7 +4,78 @@ An example of keehost client in command line (Python).
 
 ## Usage
 
-Coming soon
+Usage:
+
+```sh
+bash-3.2$ ./cli.py --help
+usage: cli.py [-h] --action ACTION
+
+A command line tool to interact with a keehost api
+
+optional arguments:
+  -h, --help       show this help message and exit
+  --action ACTION  The action you want to do, allowed: list_all, create_group,
+                   delete_group, create_entry, get_entry, delete_entry
+```
+
+Available actions are described in the help command.
+
+### Creating group
+
+A group is containing multiple entries.
+
+```sh
+bash-3.2$ ./cli.py --action create_group
+[^] Group name: Social
+[^] Creating group 'Social'
+[+] Success !
+```
+
+### Creating entry
+
+An entry is containing url, name, username and password.
+
+```sh
+bash-3.2$ ./cli.py --action create_entry
+[^] Entry name: Facebook
+[^] Group Name: Social
+[^] Url: https://facebook.com
+[^] Master password: Password:
+[^] Password to store: Password:
+[^] Repeat password: Password:
+[+] Success !
+```
+
+### Listing entries 
+
+```sh
+bash-3.2$ ./cli.py --action list_all
+[^] Listing Groups and entries!
+
+[G] Game
+[E]      59d4a4563b6e3de4e5443c3e - Steam
+
+[G] Social
+[E]      59d4a41c3b6e3de4e5443c3c - Google
+[E]      59d4a3cd3b6e3de4e5443c3b - Facebook
+
+[+] Done!
+[+] Success !
+```
+
+### Retrieving entry password
+
+```sh
+bash-3.2$ ./cli.py --action get_entry
+[+] Entry ID: 59d4a41c3b6e3de4e5443c3c
+[+] Master passwordPassword:
+[^] Here is your entry:
+[^]      Name: Google
+[^]      URL: https://facebook.com
+[^]      Password: 456
+[^]      Group: Social
+[+] Success !
+```
 
 ## Library
 
