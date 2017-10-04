@@ -40,7 +40,7 @@ bash-3.2$ ./cli.py --action create_entry
 [^] Entry name: Facebook
 [^] Group Name: Social
 [^] Url: https://facebook.com
-[^] Master password: Password:
+[^] Master password:
 [^] Password to store: Password:
 [^] Repeat password: Password:
 [+] Success !
@@ -68,7 +68,7 @@ bash-3.2$ ./cli.py --action list_all
 ```sh
 bash-3.2$ ./cli.py --action get_entry
 [+] Entry ID: 59d4a41c3b6e3de4e5443c3c
-[+] Master passwordPassword:
+[+] Master password:
 [^] Here is your entry:
 [^]      Name: Google
 [^]      URL: https://facebook.com
