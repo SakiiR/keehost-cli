@@ -57,7 +57,7 @@ def _find_group():
 
     found = False
     while not found:
-        group = Group.find_one(params={'where': {'name': read_string('[+] Group Name: ')}})
+        group = Group.find_one(params={'where': {'name': read_string('[^] Group Name: ')}})
         if group is not None:
             found = True
         else:
@@ -114,7 +114,7 @@ def create_entry():
     entry.name = read_string("[^] Entry name: ")
     entry.group = _find_group()._id
     entry.url = read_string("[^] Url: ")
-    aes = AESCipher(key=_read_password(prompt="[+] Master password: "))
+    aes = AESCipher(key=_read_password(prompt="[^] Master password: "))
     entry.value = aes.encrypt(_read_passwords())
     return entry.save()
 
