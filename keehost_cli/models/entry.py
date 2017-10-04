@@ -8,8 +8,8 @@ class Entry(Model):
 
     name = ""
     value = ""
-    key = ""
     url = ""
+    username = ""
     icon = ""
     group = None
 
@@ -17,8 +17,8 @@ class Entry(Model):
         return {
             'name': self.name,
             'value': self.value,
-            'key': self.key,
             'url': self.url,
+            'username': self.username,
             'icon': self.icon,
             'group': self.group._id if type(self.group) == Group else self.group
         }
@@ -44,7 +44,7 @@ class Entry(Model):
         entry = cls.get_meta(entry, Model.from_response(response))
         entry.name = response.get('name')
         entry.value = response.get('value')
-        entry.key = response.get('key')
+        entry.username = response.get('username')
         entry.url = response.get('url')
         entry.icon = response.get('icon')
         group = response.get('group')
