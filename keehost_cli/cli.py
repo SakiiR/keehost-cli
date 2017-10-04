@@ -112,6 +112,7 @@ def create_entry():
     entry = Entry()
     entry.icon = None
     entry.name = read_string("[^] Entry name: ")
+    entry.username = read_string("[^] Username: ")
     entry.group = _find_group()._id
     entry.url = read_string("[^] Url: ")
     aes = AESCipher(key=_read_password(prompt="[^] Master password: "))
@@ -154,6 +155,7 @@ def get_entry():
     print("[^] Here is your entry: ")
     print("[^]\t Name: %s" % entry.name)
     print("[^]\t URL: %s" % entry.url)
+    print("[^]\t Username: %s" % entry.username)
     print("[^]\t Password: %s" % password)
     if entry.group is not None:
         print("[^]\t Group: %s" % entry.group.name)
